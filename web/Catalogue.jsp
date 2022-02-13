@@ -5,19 +5,38 @@
 --%>
 
 
-<%@page contentType="text/html" pageEncoding="UTF-8"
-        import="model.Catalogue,model.Product,java.util.Arrays"
+<%@page contentType="text/html" pageEncoding="UTF-8" session="true"
+        import="model.Catalogue,model.Product"
 %>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style.css">
     </head>
     <body>
-    
-        <%= Arrays.toString(Catalogue.instance().getAllProducts().stream().map(Product::getName).toArray(String[]::new)) %>
-        <br>
-        <%= Catalogue.instance().getAllProducts().size() %>
+        <jsp:include page="PageHeader.jsp"></jsp:include>
+        
+        <table id="productTable">
+            <% for(Product p : Catalogue.instance().getAllProducts()) { %>
+            <tr>
+                <td style="text-align:center">
+                    <img src="<%= p.getImageLink() %>" alt="Picture of product <%= p.getName() %>" width="100" height="150"/>
+                </td>
+                <td>
+                    <ul id="productAttributes">
+                        <li>Title: <%= p.getName() %></li>
+                        <li>Price: <%= p.getPrice() %> €</li>
+                        <li>Link: <a href="<%= p.getLink() %>">More information</a></li>
+                        <% for(String a : p.getAttributes()) { %>
+                            <li><%= a.toString() %></li>
+                        <% } %>
+                    </ul>
+                </td>
+            </tr>
+            <% } %>
+        </table>
     </body>
 </html>

@@ -1,13 +1,13 @@
 package control;
 
-import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.ShoppingCart;
 
 /**
  *
@@ -19,9 +19,32 @@ public class Handler extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        RequestDispatcher dispatch = request.getRequestDispatcher("Catalogue.jsp");
+        HttpSession session = request.getSession();
         
-        dispatch.forward(request, response);
+        if(session.getAttribute("ShoppingCart") == null){
+            session.setAttribute("ShoppingCart", new ShoppingCart());
+        }
+        
+        String commandName = request.getParameter("command");
+        
+        Command c;
+        
+        if(commandName != null) {
+            c = getCommand(commandName);
+        } else {
+            c = new GoToCatalogue();
+        }
+        
+        c.execute(request, response);
+    }
+    
+    private Command getCommand(String commandName){
+        try {
+            return (Command) Class.forName(commandName)
+                    .getDeclaredConstructor().newInstance();
+        } catch (ReflectiveOperationException e) {
+            return new UnknownCommand();
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -36,17 +36,20 @@ public class JSONProductLoader implements ProductLoader {
             
             String name         = p.getString("title");
             String imageLink    = p.getString("imageLink");
+            String link         = p.getString("link");
             Double price        = p.getJsonNumber("price").doubleValue();
             
             
             ArrayList<String> attributes = new ArrayList<>();
             for(var entry : p.entrySet()){
-                if(!List.of("title", "price", "imageLink").contains(entry.getKey())){
-                    attributes.add(entry.getKey() + entry.getValue().toString());
+
+                if(!List.of("title", "price", "imageLink", "link").contains(entry.getKey())){
+                    attributes.add(entry.getKey() + ": " + entry.getValue().toString());
                 }
+                
             }
             
-            productsList.add(new Product(name, imageLink, price, 
+            productsList.add(new Product(name, imageLink, link, price, 
                     Collections.unmodifiableList(attributes)));
         }        
                 

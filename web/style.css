@@ -1,0 +1,40 @@
+/* 
+    Created on : Feb 13, 2022, 3:04:54 PM
+    Author     : RubisRage (Rubén Santana Lorenzo - ruben.santana120@alu.ulgpc.es)
+*/
+
+#navbar {
+    list-style-type: none;
+    margin: -10px;
+    padding: 10px;
+    background-color: #003333;
+    overflow: hidden;
+    border: 0;
+}
+
+#navbar li {
+    display: inline;
+    float: left;
+}
+
+#navbar li:last-child {
+    float: right;
+}
+
+#navbar li a {
+    color: white;
+    display: block;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-align: center;
+}
+
+#productTable {
+    margin-top: 20px;
+    width: 100%;
+}
+
+#productTable, #productTable tr, #productTable td{
+  border: 1px solid black;
+  border-collapse: collapse;
+}

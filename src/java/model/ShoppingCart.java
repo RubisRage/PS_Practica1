@@ -22,4 +22,8 @@ public class ShoppingCart {
     public boolean removeProduct(Product p){
         return products.remove(p);
     }
+    
+    public Integer size() {
+        return products.size();
+    }
 }

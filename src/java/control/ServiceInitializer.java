@@ -3,9 +3,6 @@ package control;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import model.Catalogue;
 import persistence.JSONProductLoader;
 
