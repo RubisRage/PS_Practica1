@@ -26,4 +26,12 @@ public class ShoppingCart {
     public Integer size() {
         return products.size();
     }
+    
+    public Double getTotalPrice(){
+        return products.stream().mapToDouble(Product::getPrice).sum();
+    }
+    
+    public void clear(){
+        products.clear();
+    }
 }

@@ -40,7 +40,7 @@ public class Handler extends HttpServlet {
     
     private Command getCommand(String commandName){
         try {
-            return (Command) Class.forName(commandName)
+            return (Command) Class.forName("control." + commandName)
                     .getDeclaredConstructor().newInstance();
         } catch (ReflectiveOperationException e) {
             return new UnknownCommand();

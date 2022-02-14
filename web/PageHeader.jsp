@@ -9,5 +9,12 @@
 
 <ul id="navbar">
     <li><a href="${pageContext.request.contextPath}/Shop">CATALOGUE</a></li>
-    <li><a href="">CART <%= ((ShoppingCart)session.getAttribute("ShoppingCart")).size()%></a></li>
+    <li>
+        <form id="cartForm" action="${pageContext.request.contextPath}/Shop">
+            <input type="hidden" name="command" value="GoToCart" />
+            <a  href="javascript:{}" onclick="document.getElementById('cartForm').submit();">
+                CART <%= ((ShoppingCart)session.getAttribute("ShoppingCart")).size()%>
+            </a>
+        </form>
+    </li>
 </ul>

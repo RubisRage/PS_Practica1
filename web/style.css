@@ -3,13 +3,21 @@
     Author     : RubisRage (Rubén Santana Lorenzo - ruben.santana120@alu.ulgpc.es)
 */
 
+body {
+    padding-top: 70px;
+}
+
 #navbar {
     list-style-type: none;
-    margin: -10px;
-    padding: 10px;
+    width: 100%;
+    padding: 0px;
     background-color: #003333;
     overflow: hidden;
     border: 0;
+    position: fixed;
+    top: 0;
+    margin-top: 0;
+    margin-left: -8px;
 }
 
 #navbar li {
@@ -24,10 +32,15 @@
 #navbar li a {
     color: white;
     display: block;
-    padding: 14px 16px;
+    padding: 30px 30px;
     text-decoration: none;
     text-align: center;
 }
+
+#navbar li a:hover {
+    background-color: #04AA6D;
+}
+
 
 #productTable {
     margin-top: 20px;
