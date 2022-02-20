@@ -21,10 +21,10 @@
         
         <form action="${pageContext.request.contextPath}/Shop">
             <input type="hidden" name="command" value="MakePurchase" />
-            <p style = "font-size: 3">
-                Total price: <%= String.format("%.2f", cart.getTotalPrice()) %>
+            <p style = "font-size: 30px">
+                Total price: <%= String.format("%.2f", cart.getTotalPrice()) %> €
             </p>
-            <input  type="submit" value="Make Purchase"/> <br>
+            <input  type="submit" <%= cart.size()==0? "disabled=\"disabled\"" : "" %> value="Make Purchase"/> <br>
         </form>
 
         
