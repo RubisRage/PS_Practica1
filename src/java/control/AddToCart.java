@@ -18,12 +18,11 @@ public class AddToCart implements Command{
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-        
         HttpSession session = request.getSession();
         ShoppingCart cart = (ShoppingCart) session.getAttribute("ShoppingCart");
 
         Catalogue c = Catalogue.instance();
-        Product addedProduct = c.getProduct(request.getParameter("productName"));
+        Product addedProduct = c.getProduct(new String(request.getParameter("productName").getBytes("ISO-8859-1"), "UTF-8"));
         
         cart.addProduct(addedProduct);
         

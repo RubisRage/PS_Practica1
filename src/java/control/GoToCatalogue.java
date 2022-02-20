@@ -13,11 +13,7 @@ public class GoToCatalogue implements Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException  {
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("Catalogue.jsp");
-        
-        if(dispatcher != null){
-            dispatcher.forward(request, response);
-        }
+        forward(request, response, "Catalogue.jsp");
     }
     
 }

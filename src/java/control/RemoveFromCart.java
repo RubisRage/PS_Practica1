@@ -26,7 +26,7 @@ public class RemoveFromCart implements Command {
         HttpSession session = request.getSession();
         ShoppingCart cart = (ShoppingCart) session.getAttribute("ShoppingCart");
         
-        String productName = request.getParameter("productName");
+        String productName = new String(request.getParameter("productName").getBytes("ISO-8859-1"), "UTF-8");
         Product toBeRemoved = Catalogue.instance().getProduct(productName);
      
         cart.removeProduct(toBeRemoved);

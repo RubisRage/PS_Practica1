@@ -1,5 +1,6 @@
 package model;
 
+import internal.com.sun.istack.NotNull;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -22,7 +23,7 @@ public class Catalogue{
         return INSTANCE;
     }
     
-    public static void createInstance(ProductLoader pl){
+    public static void createInstance(@NotNull ProductLoader pl){
         if(INSTANCE != null){
             throw new IllegalStateException("Catalogue::createIntance function "
                     + "called twice.");
